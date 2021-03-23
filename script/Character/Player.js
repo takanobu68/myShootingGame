@@ -1,7 +1,7 @@
-import { CharactorBase } from "../common/CharactorBase.js";
+import { CharacterBase } from "../common/CharacterBase.js";
 import { Position } from "../common/Position.js";
 
-export class Player extends CharactorBase {
+export class Player extends CharacterBase {
   constructor(ctx, x, y, image) {
     super(ctx, x, y, 0, image);
 
