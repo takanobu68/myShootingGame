@@ -54,10 +54,27 @@ export function init() {
   }
 
   function render() {
+    ctx.globalAlpha = 1.0;
     util.drawRect(0, 0, canvas.width, canvas.height, "#eee");
-    ctx.drawImage(image, playerX, playerY);
     // 現在までの経過時間を取得する（ミリ秒を秒に変換するため 1000 で除算）
     let nowTime = (Date.now() - startTime) / 1000;
+
+    if (isComing) {
+      let justTime = Date.now();
+      let comingTime = (justTime - comingStart) / 1000;
+      playerY = canvas.clientHeight - comingTime * 50;
+      if (playerY <= canvas.clientHeight - 100) {
+        isComing = false;
+        playerY = canvas.clientHeight - 100;
+      }
+
+      if (justTime % 100 < 50) {
+        ctx.globalAlpha = 0.5;
+      }
+    }
+
+    ctx.drawImage(image, playerX, playerY);
+
     requestAnimationFrame(render);
   }
 }
