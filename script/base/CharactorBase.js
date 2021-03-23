@@ -8,7 +8,11 @@ export class CharactorBase {
     this.image = image;
   }
 
+  // draw() {
+  //   this.ctx.drawImage(this.ctx, this.image, this.position.x, this.position.y);
+  // }
+
   draw() {
-    this.ctx.drawImage(this.ctx, this.image, this.position.x, this.position.y);
+    this.ctx.drawImage(this.image, this.position.x, this.position.y);
   }
 }
