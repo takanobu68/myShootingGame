@@ -1,7 +1,7 @@
 import { UtilityCanvas } from "./module/UtilityCanvas.js";
 
 export function init() {
-  let util, canvas, ctx, image;
+  let util, canvas, ctx, image, startTime;
 
   const gameScreen = document.getElementById("game-screen");
 
@@ -12,6 +12,8 @@ export function init() {
   util.imageLoader("../images/viper.png", (loadedImage) => {
     image = loadedImage;
     initialize();
+    // 実行開始時のタイムスタンプを取得する
+    startTime = Date.now();
     render();
   });
 
@@ -23,5 +25,8 @@ export function init() {
   function render() {
     util.drawRect(0, 0, canvas.width, canvas.height, "#eee");
     ctx.drawImage(image, 100, 100);
+    // 現在までの経過時間を取得する（ミリ秒を秒に変換するため 1000 で除算）
+    let nowTime = (Date.now() - startTime) / 1000;
+    requestAnimationFrame(render);
   }
 }
