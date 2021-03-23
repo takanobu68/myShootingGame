@@ -1,4 +1,4 @@
-export class GameScreen {
+export class UtilityCanvas {
   constructor(canvas) {
     this.canvasElement = canvas;
     this.context2d = canvas.getContext("2d");
