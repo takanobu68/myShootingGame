@@ -1,9 +1,12 @@
 import { UtilityCanvas } from "./module/UtilityCanvas.js";
 
 export function init() {
-  let util, canvas, ctx, image, startTime;
-
   const gameScreen = document.getElementById("game-screen");
+
+  let util, canvas, ctx, image, startTime, player, comingStart;
+  let isComing = false;
+  let playerX = gameScreen.clientWidth / 2;
+  let playerY = gameScreen.clientHeight / 2;
 
   util = new UtilityCanvas(gameScreen);
   canvas = util.canvas;
