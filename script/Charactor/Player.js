@@ -1,5 +1,5 @@
-import { CharactorBase } from "../base/CharactorBase.js";
-import { Position } from "../param/Position.js";
+import { CharactorBase } from "../common/CharactorBase.js";
+import { Position } from "../common/Position.js";
 
 export class Player extends CharactorBase {
   constructor(ctx, x, y, image) {

@@ -1,5 +1,5 @@
 import { UtilityCanvas } from "./module/UtilityCanvas.js";
-import { Position } from "./param/Position.js";
+import { Position } from "./common/Position.js";
 import { Player } from "./Charactor/Player.js";
 
 export function init() {

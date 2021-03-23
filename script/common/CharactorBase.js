@@ -1,4 +1,4 @@
-import { Position } from "../param/Position.js";
+import { Position } from "./Position.js";
 
 export class CharactorBase {
   constructor(ctx, x, y, life, image) {
