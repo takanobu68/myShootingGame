@@ -1,4 +1,5 @@
 import { UtilityCanvas } from "./module/UtilityCanvas.js";
+import { Position } from "./param/Position.js";
 
 export function init() {
   const gameScreen = document.getElementById("game-screen");
