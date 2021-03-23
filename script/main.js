@@ -17,17 +17,45 @@ export function init() {
     initialize();
     // 実行開始時のタイムスタンプを取得する
     startTime = Date.now();
+    eventSetting();
     render();
   });
 
   function initialize() {
     canvas.width = gameScreen.clientWidth;
     canvas.height = gameScreen.clientHeight;
+
+    isComing = true;
+    comingStart = Date.now();
+    playerY = gameScreen.clientHeight;
+  }
+
+  function eventSetting() {
+    window.addEventListener(
+      "keydown",
+      (event) => {
+        switch (event.key) {
+          case "ArrowLeft":
+            playerX -= 10;
+            break;
+          case "ArrowRight":
+            playerX += 10;
+            break;
+          case "ArrowUp":
+            playerY -= 10;
+            break;
+          case "ArrowDown":
+            playerY += 10;
+            break;
+        }
+      },
+      false
+    );
   }
 
   function render() {
     util.drawRect(0, 0, canvas.width, canvas.height, "#eee");
-    ctx.drawImage(image, 100, 100);
+    ctx.drawImage(image, playerX, playerY);
     // 現在までの経過時間を取得する（ミリ秒を秒に変換するため 1000 で除算）
     let nowTime = (Date.now() - startTime) / 1000;
     requestAnimationFrame(render);
