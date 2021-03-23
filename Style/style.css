@@ -14,9 +14,10 @@ body {
   overflow: hidden;
 }
 
-canvas {
+#game-screen {
   background-color: #eee;
   width: 80%;
   height: 80vh;
   margin: 0 auto;
+  border: 3px solid #000;
 }
