@@ -27,9 +27,14 @@ export function init() {
     canvas.width = gameScreen.clientWidth;
     canvas.height = gameScreen.clientHeight;
 
-    isComing = true;
-    comingStart = Date.now();
-    playerY = gameScreen.clientHeight;
+    player = new Player(ctx, 0, 0, image);
+
+    player.setComing(
+      canvas.width / 2,
+      canvas.height,
+      canvas.width / 2,
+      canvas.height - 100
+    );
   }
 
   function eventSetting() {
@@ -61,21 +66,23 @@ export function init() {
     // 現在までの経過時間を取得する（ミリ秒を秒に変換するため 1000 で除算）
     let nowTime = (Date.now() - startTime) / 1000;
 
-    if (isComing) {
+    if (player.isComing) {
       let justTime = Date.now();
-      let comingTime = (justTime - comingStart) / 1000;
-      playerY = canvas.clientHeight - comingTime * 50;
-      if (playerY <= canvas.clientHeight - 100) {
-        isComing = false;
-        playerY = canvas.clientHeight - 100;
+      let comingTime = (justTime - player.comingStart) / 1000;
+      let y = canvas.clientHeight - comingTime * 50;
+      if (y <= player.comingEndPosition.y) {
+        player.isComing = false;
+        y = player.comingEndPosition.y;
       }
+
+      player.position.set(player.position.x, y);
 
       if (justTime % 100 < 50) {
         ctx.globalAlpha = 0.5;
       }
     }
 
-    ctx.drawImage(image, playerX, playerY);
+    player.draw();
 
     requestAnimationFrame(render);
   }
