@@ -17,6 +17,8 @@ export class Player extends CharacterBase {
 
     this.shotArray = null;
 
+    this.slantingShotArray = null;
+
     this.shotCheckCounter = 0;
 
     this.shotInterval = 10;
