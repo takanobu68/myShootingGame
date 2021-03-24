@@ -13,13 +13,8 @@ export function init() {
   canvas = util.canvas;
   ctx = util.context;
 
-  util.imageLoader("../images/viper.png", (loadedImage) => {
-    image = loadedImage;
-    initialize();
-    startTime = Date.now();
-    eventSetting();
-    render();
-  });
+  initialize();
+  loadCheck();
 
   function initialize() {
     canvas.width = gameScreen.clientWidth;
