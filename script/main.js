@@ -132,7 +132,6 @@ export function init() {
   }
 
   function sceneSetting() {
-    console.log(scene);
     // イントロシーン
     scene.add("intro", (time) => {
       // 2秒経過したらシーンをinvadeにする
@@ -143,19 +142,22 @@ export function init() {
     // invadeシーン
     scene.add("invade", (time) => {
       // シーンのフレーム数が0のとき以外は即座に終了する
-      if (scene.frame !== 0) {
-        return;
-      }
-      // lifeが0の状態の敵キャラクターが見つかったら配置する
-      for (let i = 0; i < enemyMaxCount; ++i) {
-        if (enemyArray[i].life <= 0) {
-          let e = enemyArray[i];
-          // 出現場所はXが画面中央、Yが画面上端の外側に設定する
-          e.set(canvas.width / 2, -e.height);
-          // 進行方向は真下に向かうように設定する
-          e.setVector(0.0, 1.0);
-          break;
+      if (scene.frame === 0) {
+        // lifeが0の状態の敵キャラクターが見つかったら配置する
+        for (let i = 0; i < enemyMaxCount; ++i) {
+          if (enemyArray[i].life <= 0) {
+            let e = enemyArray[i];
+            // 出現場所はXが画面中央、Yが画面上端の外側に設定する
+            e.set(canvas.width / 2, -e.height);
+            // 進行方向は真下に向かうように設定する
+            e.setVector(0.0, 1.0);
+            break;
+          }
         }
+      }
+      // シーンのフレーム数が 100 になったときに再度 invade を設定する
+      if (scene.frame === 100) {
+        scene.use("invade");
       }
     });
 
