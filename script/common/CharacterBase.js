@@ -1,13 +1,18 @@
 import { Position } from "./Position.js";
 
 export class CharacterBase {
-  constructor(ctx, x, y, w, h, life, image) {
+  constructor(ctx, x, y, w, h, life, imagePath) {
     this.ctx = ctx;
     this.position = new Position(x, y);
     this.width = w;
     this.height = h;
     this.life = life;
-    this.image = image;
+    this.ready = false;
+    this.image = new Image();
+    this.image.addEventListener("load", () => {
+      this.ready = true;
+    });
+    this.image.src = imagePath;
   }
 
   draw() {

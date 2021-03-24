@@ -2,8 +2,8 @@ import { CharacterBase } from "../common/CharacterBase.js";
 import { Position } from "../common/Position.js";
 
 export class Player extends CharacterBase {
-  constructor(ctx, x, y, w, h, image) {
-    super(ctx, x, y, w, h, 0, image);
+  constructor(ctx, x, y, w, h, imagePath) {
+    super(ctx, x, y, w, h, 0, imagePath);
 
     this.isComing = false;
 

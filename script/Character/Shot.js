@@ -1,8 +1,8 @@
 import { CharacterBase } from "../common/CharacterBase.js";
 
 export class Shot extends CharacterBase {
-  constructor(ctx, x, y, w, h, image) {
-    super(ctx, x, y, w, h, 0, image);
+  constructor(ctx, x, y, w, h, imagePath) {
+    super(ctx, x, y, w, h, 0, imagePath);
     this.speed = 7;
   }
 
