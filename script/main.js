@@ -7,7 +7,8 @@ export function init() {
   const gameScreen = document.getElementById("game-screen");
   const shotMaxCount = 10;
   const shotArray = [];
-  let util, canvas, ctx, image, startTime, player;
+  const slantingShotArray = [];
+  let util, canvas, ctx, startTime, player;
 
   util = new UtilityCanvas(gameScreen);
   canvas = util.canvas;
@@ -31,9 +32,25 @@ export function init() {
 
     for (let i = 0; i < shotMaxCount; ++i) {
       shotArray[i] = new Shot(ctx, 0, 0, 32, 32, "../images/viper_shot.png");
+      slantingShotArray[i * 2] = new Shot(
+        ctx,
+        0,
+        0,
+        32,
+        32,
+        "../images/viper_single_shot.png"
+      );
+      slantingShotArray[i * 2 + 1] = new Shot(
+        ctx,
+        0,
+        0,
+        32,
+        32,
+        "../images/viper_single_shot.png"
+      );
     }
 
-    player.setShotArray(shotArray);
+    player.setShotArray(shotArray, slantingShotArray);
   }
 
   function loadCheck() {
