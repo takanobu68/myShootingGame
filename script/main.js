@@ -41,6 +41,30 @@ export function init() {
     player.setShotArray(shotArray);
   }
 
+  function loadCheck() {
+    // 準備完了を意味する変数
+    let ready = true;
+    // AND演算子で準備完了しているかチェックする
+    ready = ready && player.ready;
+    // 同様にショットの準備状況も確認する
+    shotArray.forEach((shot) => {
+      ready = ready && shot.ready;
+    });
+
+    // 全ての準備が完了したら次の処理に進む
+    if (ready) {
+      // イベント設定
+      eventSetting();
+      // 実行開始時のタイムスタンプを取得する
+      startTime = Date.now();
+      // 描画を開始する
+      render();
+    } else {
+      // 準備が完了していない場合は0.1秒ごとに再帰呼び出しする
+      setTimeout(loadCheck, 10);
+    }
+  }
+
   function eventSetting() {
     window.addEventListener("keydown", (e) => {
       isKeyDown[`key_${e.key}`] = true;
