@@ -14,6 +14,8 @@ export class Player extends CharacterBase {
     this.comingEndPosition = null;
 
     this.speed = 3;
+
+    this.shotArray = null;
   }
 
   setComing(startX, startY, endX, endY) {
@@ -22,6 +24,10 @@ export class Player extends CharacterBase {
     this.position.set(startX, startY);
     this.comingStartPosition = new Position(startX, startY);
     this.comingEndPosition = new Position(endX, endY);
+  }
+
+  setShotArray(shotArray) {
+    this.setShotArray = shotArray;
   }
 
   update() {
