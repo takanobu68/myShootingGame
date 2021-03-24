@@ -32,8 +32,9 @@ export class Player extends CharacterBase {
     this.comingEndPosition = new Position(endX, endY);
   }
 
-  setShotArray(shotArray) {
+  setShotArray(shotArray, slantingShotArray) {
     this.shotArray = shotArray;
+    this.slantingShotArray = slantingShotArray;
   }
 
   update() {
