@@ -96,6 +96,23 @@ export class Player extends CharacterBase {
               break;
             }
           }
+          // 斜め方向のショットの生存を確認して非生存なら生成
+          for (let j = 0; j < this.slantingShotArray.length; j += 2) {
+            if (
+              this.slantingShotArray[j].life <= 0 &&
+              this.slantingShotArray[j + 1].life <= 0
+            ) {
+              this.slantingShotArray[j].set(this.position.x, this.position.y);
+              this.slantingShotArray[j].setVector(0.2, -0.9);
+              this.slantingShotArray[j + 1].set(
+                this.position.x,
+                this.position.y
+              );
+              this.slantingShotArray[j + 1].setVector(-0.2, -0.9);
+              this.shotCheckCounter = -this.shotInterval;
+              break;
+            }
+          }
         }
       }
       ++this.shotCheckCounter;
