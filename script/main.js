@@ -9,9 +9,11 @@ export function init() {
   const gameScreen = document.getElementById("game-screen");
   const shotMaxCount = 10;
   const enemyMaxCount = 10;
+  const enemyShotMaxCount = 50;
   const shotArray = [];
   const slantingShotArray = [];
   const enemyArray = [];
+  const enemyShotArray = [];
   let util, canvas, ctx, startTime, player, scene;
 
   util = new UtilityCanvas(gameScreen);
@@ -61,6 +63,17 @@ export function init() {
       console.log(enemyArray[j]);
     }
 
+    for (let k = 0; k < enemyShotMaxCount; ++k) {
+      enemyShotArray[k] = new Shot(
+        ctx,
+        0,
+        0,
+        32,
+        32,
+        "../images/enemy_shot.png"
+      );
+    }
+
     player.setShotArray(shotArray, slantingShotArray);
   }
 
@@ -80,6 +93,10 @@ export function init() {
 
     enemyArray.forEach((enemy) => {
       ready = ready && enemy.ready;
+    });
+
+    enemyShotArray.forEach((shot) => {
+      ready = ready && shot.ready;
     });
 
     // 全ての準備が完了したら次の処理に進む
@@ -124,6 +141,10 @@ export function init() {
 
     enemyArray.forEach((enemy) => {
       enemy.update();
+    });
+
+    enemyShotArray.forEach((shot) => {
+      shot.update();
     });
 
     scene.update();
