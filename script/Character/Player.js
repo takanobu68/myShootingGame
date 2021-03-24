@@ -27,7 +27,7 @@ export class Player extends CharacterBase {
   }
 
   setShotArray(shotArray) {
-    this.setShotArray = shotArray;
+    this.shotArray = shotArray;
   }
 
   update() {
