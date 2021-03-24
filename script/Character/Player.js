@@ -16,6 +16,10 @@ export class Player extends CharacterBase {
     this.speed = 3;
 
     this.shotArray = null;
+
+    this.shotCheckCounter = 0;
+
+    this.shotInterval = 10;
   }
 
   setComing(startX, startY, endX, endY) {
