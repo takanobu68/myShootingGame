@@ -12,7 +12,7 @@ export function init() {
   const shotArray = [];
   const slantingShotArray = [];
   const enemyArray = [];
-  let util, canvas, ctx, startTime, player;
+  let util, canvas, ctx, startTime, player, scene;
 
   util = new UtilityCanvas(gameScreen);
   canvas = util.canvas;
@@ -24,6 +24,8 @@ export function init() {
   function initialize() {
     canvas.width = gameScreen.clientWidth;
     canvas.height = gameScreen.clientHeight;
+
+    scene = new Scene();
 
     player = new Player(ctx, 0, 0, 64, 64, "../images/viper.png");
 
