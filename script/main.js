@@ -2,6 +2,7 @@ import { UtilityCanvas } from "./module/UtilityCanvas.js";
 import { Player } from "./Character/Player.js";
 import { Shot } from "./Character/Shot.js";
 import { Enemy } from "./Character/Enemy.js";
+import { Scene } from "./common/Scene.js";
 
 export function init() {
   window.isKeyDown = {};
