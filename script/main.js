@@ -76,6 +76,10 @@ export function init() {
 
     player.update();
 
+    shotArray.forEach((shot) => {
+      shot.update();
+    });
+
     requestAnimationFrame(render);
   }
 }
