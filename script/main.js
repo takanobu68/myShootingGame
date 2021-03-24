@@ -1,13 +1,16 @@
 import { UtilityCanvas } from "./module/UtilityCanvas.js";
 import { Player } from "./Character/Player.js";
 import { Shot } from "./Character/Shot.js";
+import { Enemy } from "./Character/Enemy.js";
 
 export function init() {
   window.isKeyDown = {};
   const gameScreen = document.getElementById("game-screen");
   const shotMaxCount = 10;
+  const enemyMaxCount = 10;
   const shotArray = [];
   const slantingShotArray = [];
+  const enemyArray = [];
   let util, canvas, ctx, startTime, player;
 
   util = new UtilityCanvas(gameScreen);
