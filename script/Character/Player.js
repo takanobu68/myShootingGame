@@ -59,6 +59,13 @@ export class Player extends CharacterBase {
       if (isKeyDown.key_ArrowDown === true) {
         this.position.y += this.speed; // アローキーの下
       }
+
+      // 移動後の位置が画面外へ出ていないか確認して修正する
+      let canvasWidth = this.ctx.canvas.width;
+      let canvasHeight = this.ctx.canvas.height;
+      let tx = Math.min(Math.max(this.position.x, 0), canvasWidth);
+      let ty = Math.min(Math.max(this.position.y, 0), canvasHeight);
+      this.position.set(tx, ty);
     }
 
     // 自機キャラクターを描画する
