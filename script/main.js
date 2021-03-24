@@ -63,6 +63,10 @@ export function init() {
       ready = ready && shot.ready;
     });
 
+    slantingShotArray.forEach((shot) => {
+      ready = ready && shot.ready;
+    });
+
     // 全ての準備が完了したら次の処理に進む
     if (ready) {
       // イベント設定
@@ -94,6 +98,10 @@ export function init() {
     player.update();
 
     shotArray.forEach((shot) => {
+      shot.update();
+    });
+
+    slantingShotArray.forEach((shot) => {
       shot.update();
     });
 
