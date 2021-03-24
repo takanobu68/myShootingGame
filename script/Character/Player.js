@@ -79,18 +79,23 @@ export class Player extends CharacterBase {
 
       // キーの押下状態を調べてショットを生成する
       if (window.isKeyDown.key_z) {
-        // ショットの配列を確認し、lifeが0のものがあれば
-        // 1にすることで画面に表示させる
-        for (let i = 0; i < this.shotArray.length; ++i) {
-          // まだ生成されていない物を生成する
-          if (this.shotArray[i].life <= 0) {
-            // 自機キャラクターの位置にショットを生成する
-            this.shotArray[i].set(this.position.x, this.position.y);
-            // 1つ生成したら、ループを抜ける
-            break;
+        if (this.shotCheckCounter >= 0) {
+          // ショットの配列を確認し、lifeが0のものがあれば
+          // 1にすることで画面に表示させる
+          for (let i = 0; i < this.shotArray.length; ++i) {
+            // まだ生成されていない物を生成する
+            if (this.shotArray[i].life <= 0) {
+              // 自機キャラクターの位置にショットを生成する
+              this.shotArray[i].set(this.position.x, this.position.y);
+              // ショットを生成したのでインターバルを設定する
+              this.shotCheckCounter = -this.shotInterval;
+              // 1つ生成したら、ループを抜ける
+              break;
+            }
           }
         }
       }
+      ++this.shotCheckCounter;
     }
 
     // 自機キャラクターを描画する
