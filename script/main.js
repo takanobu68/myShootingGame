@@ -22,7 +22,7 @@ export function init() {
     canvas.width = gameScreen.clientWidth;
     canvas.height = gameScreen.clientHeight;
 
-    player = new Player(ctx, 0, 0, image);
+    player = new Player(ctx, 0, 0, 64, 64, image);
 
     player.setComing(
       canvas.width / 2,
@@ -60,23 +60,7 @@ export function init() {
     util.drawRect(0, 0, canvas.width, canvas.height, "#eee");
     let nowTime = (Date.now() - startTime) / 1000;
 
-    if (player.isComing) {
-      let justTime = Date.now();
-      let comingTime = (justTime - player.comingStart) / 1000;
-      let y = canvas.clientHeight - comingTime * 50;
-      if (y <= player.comingEndPosition.y) {
-        player.isComing = false;
-        y = player.comingEndPosition.y;
-      }
-
-      player.position.set(player.position.x, y);
-
-      if (justTime % 100 < 50) {
-        ctx.globalAlpha = 0.5;
-      }
-    }
-
-    player.draw();
+    player.update();
 
     requestAnimationFrame(render);
   }
