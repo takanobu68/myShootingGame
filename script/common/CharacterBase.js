@@ -4,6 +4,7 @@ export class CharacterBase {
   constructor(ctx, x, y, w, h, life, imagePath) {
     this.ctx = ctx;
     this.position = new Position(x, y);
+    this.vector = new Position(0.0, -1.0);
     this.width = w;
     this.height = h;
     this.life = life;
@@ -13,6 +14,10 @@ export class CharacterBase {
       this.ready = true;
     });
     this.image.src = imagePath;
+  }
+
+  setVector(x, y) {
+    this.vector.set(x, y);
   }
 
   draw() {
