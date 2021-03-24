@@ -12,6 +12,8 @@ export class Player extends CharacterBase {
     this.comingStartPosition = null;
 
     this.comingEndPosition = null;
+
+    this.speed = 3;
   }
 
   setComing(startX, startY, endX, endY) {
@@ -42,6 +44,20 @@ export class Player extends CharacterBase {
       // 自機の登場演出時には点滅させる
       if (justTime % 100 < 50) {
         this.ctx.globalAlpha = 0.5;
+      }
+    } else {
+      // キーの押下状態を調べて挙動を変える
+      if (isKeyDown.key_ArrowLeft === true) {
+        this.position.x -= this.speed; // アローキーの左
+      }
+      if (isKeyDown.key_ArrowRight === true) {
+        this.position.x += this.speed; // アローキーの右
+      }
+      if (isKeyDown.key_ArrowUp === true) {
+        this.position.y -= this.speed; // アローキーの上
+      }
+      if (isKeyDown.key_ArrowDown === true) {
+        this.position.y += this.speed; // アローキーの下
       }
     }
 

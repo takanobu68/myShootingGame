@@ -2,8 +2,8 @@ import { UtilityCanvas } from "./module/UtilityCanvas.js";
 import { Player } from "./Character/Player.js";
 
 export function init() {
+  window.isKeyDown = {};
   const gameScreen = document.getElementById("game-screen");
-
   let util, canvas, ctx, image, startTime, player;
 
   util = new UtilityCanvas(gameScreen);
@@ -33,26 +33,12 @@ export function init() {
   }
 
   function eventSetting() {
-    window.addEventListener(
-      "keydown",
-      (event) => {
-        switch (event.key) {
-          case "ArrowLeft":
-            player.position.x -= 10;
-            break;
-          case "ArrowRight":
-            player.position.x += 10;
-            break;
-          case "ArrowUp":
-            player.position.y -= 10;
-            break;
-          case "ArrowDown":
-            player.position.y += 10;
-            break;
-        }
-      },
-      false
-    );
+    window.addEventListener("keydown", (e) => {
+      isKeyDown[`key_${e.key}`] = true;
+    });
+    window.addEventListener("keyup", (e) => {
+      isKeyDown[`key_${e.key}`] = false;
+    });
   }
 
   function render() {
