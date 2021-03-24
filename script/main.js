@@ -75,6 +75,10 @@ export function init() {
       ready = ready && shot.ready;
     });
 
+    enemyArray.forEach((enemy) => {
+      ready = ready && enemy.ready;
+    });
+
     // 全ての準備が完了したら次の処理に進む
     if (ready) {
       // イベント設定
@@ -111,6 +115,10 @@ export function init() {
 
     slantingShotArray.forEach((shot) => {
       shot.update();
+    });
+
+    enemyArray.forEach((enemy) => {
+      enemy.update();
     });
 
     requestAnimationFrame(render);
