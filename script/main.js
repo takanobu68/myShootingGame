@@ -1,9 +1,12 @@
 import { UtilityCanvas } from "./module/UtilityCanvas.js";
 import { Player } from "./Character/Player.js";
+import { Shot } from "./Character/Shot.js";
 
 export function init() {
   window.isKeyDown = {};
   const gameScreen = document.getElementById("game-screen");
+  const shotMaxCount = 10;
+  const shotArray = [];
   let util, canvas, ctx, image, startTime, player;
 
   util = new UtilityCanvas(gameScreen);
