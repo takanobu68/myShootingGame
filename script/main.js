@@ -33,6 +33,12 @@ export function init() {
       canvas.width / 2,
       canvas.height - 100
     );
+
+    for (let i = 0; i < shotMaxCount; ++i) {
+      shotArray[i] = new Shot(ctx, 0, 0, 32, 32, "../images/viper_shot.png");
+    }
+
+    player.setShotArray(shotArray);
   }
 
   function eventSetting() {
