@@ -22,7 +22,7 @@ export function init() {
     canvas.width = gameScreen.clientWidth;
     canvas.height = gameScreen.clientHeight;
 
-    player = new Player(ctx, 0, 0, 64, 64, image);
+    player = new Player(ctx, 0, 0, image);
 
     player.setComing(
       canvas.width / 2,
