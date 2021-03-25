@@ -1,10 +1,10 @@
-import { Position } from "./Position.js";
+import { Vector2 } from "./Vector2.js";
 
 export class CharacterBase {
   constructor(ctx, x, y, w, h, life, imagePath) {
     this.ctx = ctx;
-    this.position = new Position(x, y);
-    this.vector = new Position(0.0, -1.0);
+    this.position = new Vector2(x, y);
+    this.vector = new Vector2(0.0, -1.0);
     this.width = w;
     this.height = h;
     this.life = life;

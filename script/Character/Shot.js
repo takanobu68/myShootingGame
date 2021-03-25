@@ -1,11 +1,11 @@
 import { CharacterBase } from "../common/CharacterBase.js";
-import { Position } from "../common/Position.js";
+import { Vector2 } from "../common/Vector2.js";
 
 export class Shot extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
     super(ctx, x, y, w, h, 0, imagePath);
     this.speed = 7;
-    this.vector = new Position(0.0, -1.0);
+    this.vector = new Vector2(0.0, -1.0);
   }
 
   set(x, y) {

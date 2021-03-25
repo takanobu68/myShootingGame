@@ -1,5 +1,5 @@
 import { CharacterBase } from "../common/CharacterBase.js";
-import { Position } from "../common/Position.js";
+import { Vector2 } from "../common/Vector2.js";
 
 export class Player extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
@@ -28,8 +28,8 @@ export class Player extends CharacterBase {
     this.isComing = true;
     this.comingStart = Date.now();
     this.position.set(startX, startY);
-    this.comingStartPosition = new Position(startX, startY);
-    this.comingEndPosition = new Position(endX, endY);
+    this.comingStartPosition = new Vector2(startX, startY);
+    this.comingEndPosition = new Vector2(endX, endY);
   }
 
   setShotArray(shotArray, slantingShotArray) {
