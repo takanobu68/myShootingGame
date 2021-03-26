@@ -34,29 +34,52 @@ export class Shot extends CharacterBase {
     }
   }
 
+  setExplosions(targets) {
+    if (targets != null && Array.isArray(targets) && targets.length > 0) {
+      this.explosionArray = targets;
+    }
+  }
+
   update() {
+    // もしショットライフが0だったら即終了
     if (this.life <= 0) {
       return;
     }
 
+    // 画面外に移動していたらライフを0にする
     if (
       this.position.y + this.height < 0 ||
       this.position.y + this.width > this.ctx.canvas.height
     ) {
       this.life = 0;
     }
+
+    // ショットを進行方向に沿って移動する
     this.position.x += this.vector.x * this.speed;
     this.position.y += this.vector.y * this.speed;
 
     // ショットと対象との衝突判定を行う
     this.targetArray.forEach((target) => {
+      // 自身(ショットそのもの)か対象のライフ0以下の場合は何もしない
       if (this.life <= 0 || target.life <= 0) {
         return;
       }
+      // 自身の位置と対象との距離を測る
       let dist = this.position.distance(target.position);
+      // 自身と対象の幅の1/4の距離まで近づいている場合衝突とみなす
       if (dist <= (this.width + target.width) / 4) {
+        // 対象のライフを攻撃力分減算する
         target.life -= this.power;
-        this.life = 0;
+        // もし対象のライフが0以下になったら爆発させる
+        if (target.life <= 0) {
+          for (let i = 0; i < this.explosionArray.length; ++i) {
+            // 発生していない爆発エフェクトがあれば対象の位置に生成する
+            if (!this.explosionArray[i].life) {
+              this.explosionArray[i].set(target.position.x, target.position.y);
+              break;
+            }
+          }
+        }
       }
     });
 
