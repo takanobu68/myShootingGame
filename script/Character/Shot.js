@@ -5,7 +5,6 @@ export class Shot extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
     super(ctx, x, y, w, h, 0, imagePath);
     this.speed = 7;
-    this.vector = new Vector2(0.0, -1.0);
   }
 
   set(x, y) {
@@ -13,9 +12,6 @@ export class Shot extends CharacterBase {
     this.life = 1;
   }
 
-  setVector(x, y) {
-    this.vector.set(x, y);
-  }
 
   setSpeed(speed) {
     if (speed !== null && speed > 0) {
