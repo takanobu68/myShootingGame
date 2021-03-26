@@ -17,6 +17,12 @@ export class Shot extends CharacterBase {
     this.vector.set(x, y);
   }
 
+  setSpeed(speed) {
+    if (speed !== null && speed > 0) {
+      this.speed.speed;
+    }
+  }
+
   update() {
     if (this.life <= 0) {
       return;
