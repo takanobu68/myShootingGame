@@ -40,6 +40,10 @@ export class Player extends CharacterBase {
   }
 
   update() {
+    // ライフが尽きていたら何も操作できないようにする
+    if (this.life <= 0) {
+      return;
+    }
     // 現時点のタイムスタンプを取得する
     let justTime = Date.now();
 
