@@ -1,4 +1,5 @@
 import { CharacterBase } from "../common/CharacterBase.js";
+import { Player } from "./Player.js";
 
 export class Shot extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
