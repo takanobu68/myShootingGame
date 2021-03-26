@@ -3,6 +3,7 @@ import { Player } from "./Character/Player.js";
 import { Shot } from "./Character/Shot.js";
 import { Enemy } from "./Character/Enemy.js";
 import { Scene } from "./common/Scene.js";
+import { Explosion } from "./effect/Explosion.js";
 
 export function init() {
   window.isKeyDown = {};
@@ -10,10 +11,12 @@ export function init() {
   const shotMaxCount = 10;
   const enemyMaxCount = 10;
   const enemyShotMaxCount = 50;
+  const explosionMaxCount = 10;
   const shotArray = [];
   const slantingShotArray = [];
   const enemyArray = [];
   const enemyShotArray = [];
+  const explosionArray = [];
   let util, canvas, ctx, startTime, player, scene;
 
   util = new UtilityCanvas(gameScreen);
