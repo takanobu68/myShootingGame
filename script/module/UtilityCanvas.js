@@ -51,4 +51,12 @@ export class UtilityCanvas {
     // 画像のロードを開始するためにパスを指定する
     target.src = path;
   }
+
+  drawText(text, x, y, color, width) {
+    // 色が指定されている場合はスタイルを設定する
+    if (color != null) {
+      this.context2d.fillStyle = color;
+    }
+    this.context2d.fillText(text, x, y, width);
+  }
 }
