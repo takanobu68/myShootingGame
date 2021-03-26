@@ -256,4 +256,13 @@ export function init() {
     // 最初のシーンにはintroを設定する
     scene.use("intro");
   }
+
+  function zeroPadding(number, count) {
+    // 配列を指定の桁数分の長さで初期化する
+    let zeroArray = new Array(count);
+    // 配列の要素を0を挟んで連結する
+    let zeroString = zeroArray.join("0") + number;
+    // 文字列の後ろから桁数分だけ文字を抜き取る
+    return zeroString.slice(-count);
+  }
 }
