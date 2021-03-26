@@ -18,6 +18,7 @@ export function init() {
   const enemyShotArray = [];
   const explosionArray = [];
   let util, canvas, ctx, startTime, player, scene;
+  let restart = false;
 
   util = new UtilityCanvas(gameScreen);
   canvas = util.canvas;
@@ -82,6 +83,8 @@ export function init() {
         32,
         "../images/enemy_shot.png"
       );
+      enemyShotArray[i].setTargets([player]);
+      enemyShotArray[i].setExplosions(explosionArray);
     }
 
     player.setShotArray(shotArray, slantingShotArray);
