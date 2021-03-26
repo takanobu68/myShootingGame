@@ -216,9 +216,41 @@ export function init() {
       if (scene.frame === 100) {
         scene.use("invade");
       }
+      // 自機キャラクターが被弾してライフが0になっていたらゲームオーバー
+      if (player.life <= 0) {
+        scene.use("gameover");
+      }
     });
 
-    // 最初にシーンにはintroを設定する
+    // ゲームオーバーシーン
+    // ここでは画面にゲームオーバーの文字が流れ続けるようにする
+    scene.add("gameover", (time) => {
+      // 流れる文字の幅は画面の幅の半分を最大の幅とする
+      let textWidth = canvas.width / 2;
+      // 文字の幅を全体の幅に足し、ループする幅を決める
+      let loopWidth = canvas.width + textWidth;
+      // フレーム数に対する除算の剰余を計算し。文字列の位置とする
+      let x = canvas.width - ((scene.frame * 2) % loopWidth);
+      // 文字列の描画
+      ctx.font = "bold 72px sans-serif";
+      util.drawText("GAME OVER", x, canvas.height / 2, "#ff0000", textWidth);
+      // 再スタートのための処理
+      if (restart) {
+        // 再スタートフラグはここでまず最初に下げておく
+        restart = false;
+        // 再度スタートするための座標などの設定
+        player.setComing(
+          canvas.width / 2,
+          canvas.height + 50,
+          canvas.width / 2,
+          canvas.height - 100
+        );
+        // シーンをintroに設定
+        scene.use("intro");
+      }
+    });
+
+    // 最初のシーンにはintroを設定する
     scene.use("intro");
   }
 }
