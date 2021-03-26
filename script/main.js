@@ -176,7 +176,7 @@ export function init() {
           if (enemyArray[i].life <= 0) {
             let e = enemyArray[i];
             // 出現場所はXが画面中央、Yが画面上端の外側に設定する
-            e.set(canvas.width / 2, -e.height);
+            e.set(canvas.width / 2, -e.height, 2, "default");
             // 進行方向は真下に向かうように設定する
             e.setVector(0.0, 1.0);
             break;
