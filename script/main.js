@@ -7,6 +7,7 @@ import { Explosion } from "./effect/Explosion.js";
 
 export function init() {
   window.isKeyDown = {};
+  window.gameScore = 0;
   const gameScreen = document.getElementById("game-screen");
   const shotMaxCount = 10;
   const enemyMaxCount = 10;
