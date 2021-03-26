@@ -86,11 +86,15 @@ export function init() {
 
     player.setShotArray(shotArray, slantingShotArray);
 
-    // 衝突判定を行うために対象を設定する
-    for (let l = 0; l < shotMaxCount; ++l) {
-      shotArray[l].setTargets(enemyArray);
-      slantingShotArray[l * 2].setTargets(enemyArray);
-      slantingShotArray[l * 2 + 1].setTargets(enemyArray);
+    for (i = 0; i < shotMaxCount; ++i) {
+      // 衝突判定を行うために対象を設定する
+      shotArray[i].setTargets(enemyArray);
+      slantingShotArray[i * 2].setTargets(enemyArray);
+      slantingShotArray[i * 2 + 1].setTargets(enemyArray);
+      // 爆発効果を発火させる為にショットに設定する
+      shotArray[i].setExplosions(explosionArray);
+      slantingShotArray[i * 2].setExplosions(explosionArray);
+      slantingShotArray[i * 2 + 1].setExplosions(explosionArray);
     }
   }
 
