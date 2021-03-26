@@ -6,7 +6,7 @@ export class Enemy extends CharacterBase {
 
     this.type = "default";
 
-    this.frame = 0;
+    this.frame = 0; // 間隔調整を行う為に使用
 
     this.speed = 3;
 
@@ -20,6 +20,9 @@ export class Enemy extends CharacterBase {
     this.frame = 0;
   }
 
+  setShotArray(shotArray) {
+    this.shotArray = shotArray;
+  }
   update() {
     if (this.life <= 0) {
       return;
