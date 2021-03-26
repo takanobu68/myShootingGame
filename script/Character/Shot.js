@@ -87,6 +87,11 @@ export class Shot extends CharacterBase {
               break;
             }
           }
+          // もし対象が敵キャラクターの場合はスコアを加算する
+          if (target instanceof Enemy) {
+            // スコアシステムにもよるが仮でここでは最大スコアを制限
+            gameScore = Math.min(gameScore + 100, 99999);
+          }
         }
       }
     });
