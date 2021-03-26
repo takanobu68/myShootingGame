@@ -90,6 +90,8 @@ export class Player extends CharacterBase {
             if (this.shotArray[i].life <= 0) {
               // 自機キャラクターの位置にショットを生成する
               this.shotArray[i].set(this.position.x, this.position.y);
+              // 中央のショットは攻撃力を 2 にする
+              this.shotArray[i].setPower(2);
               // ショットを生成したのでインターバルを設定する
               this.shotCheckCounter = -this.shotInterval;
               // 1つ生成したら、ループを抜ける
