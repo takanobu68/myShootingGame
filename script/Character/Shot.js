@@ -14,7 +14,6 @@ export class Shot extends CharacterBase {
     this.life = 1;
   }
 
-
   setSpeed(speed) {
     if (speed !== null && speed > 0) {
       this.speed.speed;
@@ -38,12 +37,26 @@ export class Shot extends CharacterBase {
       return;
     }
 
-    if (this.position.y + this.height < 0) {
+    if (
+      this.position.y + this.height < 0 ||
+      this.position.y + this.width > this.ctx.canvas.height
+    ) {
       this.life = 0;
     }
-
     this.position.x += this.vector.x * this.speed;
     this.position.y += this.vector.y * this.speed;
+
+    // ショットと対象との衝突判定を行う
+    this.targetArray.forEach((target) => {
+      if (this.life <= 0 || target.life <= 0) {
+        return;
+      }
+      let dist = this.position.distance(target.position);
+      if (dist <= (this.width + target.width) / 4) {
+        target.life -= this.power;
+        this.life = 0;
+      }
+    });
 
     this.draw();
   }
