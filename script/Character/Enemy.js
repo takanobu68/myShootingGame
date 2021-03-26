@@ -23,16 +23,49 @@ export class Enemy extends CharacterBase {
   setShotArray(shotArray) {
     this.shotArray = shotArray;
   }
+
+  fire(x = 0.0, y = 1.0) {
+    // ショットの生存を確認し非生存の物があれば生成する
+    for (let i = 0; i < this.shotArray.length; ++i) {
+      // 非生存かどうか確認する
+      if (this.shotArray[i].life <= 0) {
+        // 敵キャラクターの座標にショットを生成する
+        this.shotArray[i].set(this.position.x, this.position.y);
+        // ショットのスピードを設定する
+        this.shotArray[i].setSpeed(5.0);
+        // ショットの方向を設定する
+        this.shotArray[i].setVector(x, y);
+        break;
+      }
+    }
+  }
+
   update() {
     if (this.life <= 0) {
       return;
     }
-    if (this.position.y + this.height > this.ctx.canvas.height) {
-      this.life = 0;
+    // タイプに応じて挙動を変える
+    // タイプに応じてライフを0にする条件を変える
+    switch (this.type) {
+      case "default":
+      default:
+        // 配置後のフレームが50の時にショットを放つ
+        if (this.frame === 50) {
+          this.fire();
+        }
+        // 敵キャラクターを進行方向に沿って移動させる
+        this.position.x += this.vector.x * this.speed;
+        this.position.y += this.vector.y * this.speed;
+        // 画面外へ移動したらライフを0にする
+        if (this.position.y + this.height > this.ctx.canvas.height) {
+          this.life = 0;
+        }
+        break;
     }
-    this.position.x += this.vector.x * this.speed;
-    this.position.y += this.vector.y * this.speed;
 
     this.draw();
+
+    // 自身のフレームをインクリメントする
+    ++this.frame;
   }
 }
