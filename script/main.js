@@ -168,6 +168,10 @@ export function init() {
       shot.update();
     });
 
+    explosionArray.forEach((explosion) => {
+      explosion.update();
+    });
+
     scene.update();
 
     requestAnimationFrame(render);
