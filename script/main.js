@@ -60,7 +60,7 @@ export function init() {
 
     for (let j = 0; j < enemyMaxCount; ++j) {
       enemyArray[j] = new Enemy(ctx, 0, 0, 48, 48, "../images/enemy_small.png");
-      console.log(enemyArray[j]);
+      enemyArray[j].setShotArray(enemyShotArray);
     }
 
     for (let k = 0; k < enemyShotMaxCount; ++k) {
