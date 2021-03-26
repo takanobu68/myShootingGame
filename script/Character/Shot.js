@@ -1,5 +1,6 @@
 import { CharacterBase } from "../common/CharacterBase.js";
 import { Player } from "./Player.js";
+import { Enemy } from "./Enemy.js";
 
 export class Shot extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
