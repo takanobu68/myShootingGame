@@ -1,5 +1,4 @@
 import { CharacterBase } from "../common/CharacterBase.js";
-import { Vector2 } from "../common/Vector2.js";
 
 export class Shot extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
@@ -7,11 +6,14 @@ export class Shot extends CharacterBase {
     this.speed = 7;
     this.power = 1;
     this.targetArray = []; // 自身と衝突判定を取る対象を格納する
+    this.explosionArray = [];
   }
 
-  set(x, y) {
+  set(x, y, speed, power) {
     this.position.set(x, y);
     this.life = 1;
+    this.setSpeed(speed);
+    this.setPower(power);
   }
 
   setSpeed(speed) {
