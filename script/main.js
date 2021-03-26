@@ -142,6 +142,14 @@ export function init() {
   function eventSetting() {
     window.addEventListener("keydown", (e) => {
       isKeyDown[`key_${e.key}`] = true;
+      // GAME OVERから再スタートする為の設定
+      if (e.key === "Enter") {
+        // 自機キャラクターのライフが0以下の場合
+        if (player.life <= 0) {
+          // 再スタートフラグを立てる
+          restart = true;
+        }
+      }
     });
     window.addEventListener("keyup", (e) => {
       isKeyDown[`key_${e.key}`] = false;
