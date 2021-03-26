@@ -75,6 +75,13 @@ export function init() {
     }
 
     player.setShotArray(shotArray, slantingShotArray);
+
+    // 衝突判定を行うために対象を設定する
+    for (let l = 0; l < shotMaxCount; ++l) {
+      shotArray[l].setTargets(enemyArray);
+      slantingShotArray[l * 2].setTargets(enemyArray);
+      slantingShotArray[l * 2 + 1].setTargets(enemyArray);
+    }
   }
 
   function loadCheck() {
