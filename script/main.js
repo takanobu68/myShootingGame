@@ -239,6 +239,8 @@ export function init() {
       if (restart) {
         // 再スタートフラグはここでまず最初に下げておく
         restart = false;
+        // スコアをリセットしておく
+        gameScore = 0;
         // 再度スタートするための座標などの設定
         player.setComing(
           canvas.width / 2,
