@@ -41,7 +41,14 @@ export function init() {
       canvas.height - 100
     );
 
-    for (let i = 0; i < shotMaxCount; ++i) {
+    let i;
+
+    // 爆発エフェクトを初期化する
+    for (i = 0; i < explosionMaxCount; ++i) {
+      explosionArray[i] = new Explosion(ctx, 50.0, 15, 30.0, 0.25);
+    }
+
+    for (i = 0; i < shotMaxCount; ++i) {
       shotArray[i] = new Shot(ctx, 0, 0, 32, 32, "../images/viper_shot.png");
       slantingShotArray[i * 2] = new Shot(
         ctx,
@@ -61,13 +68,13 @@ export function init() {
       );
     }
 
-    for (let j = 0; j < enemyMaxCount; ++j) {
-      enemyArray[j] = new Enemy(ctx, 0, 0, 48, 48, "../images/enemy_small.png");
-      enemyArray[j].setShotArray(enemyShotArray);
+    for (i = 0; i < enemyMaxCount; ++i) {
+      enemyArray[i] = new Enemy(ctx, 0, 0, 48, 48, "../images/enemy_small.png");
+      enemyArray[i].setShotArray(enemyShotArray);
     }
 
-    for (let k = 0; k < enemyShotMaxCount; ++k) {
-      enemyShotArray[k] = new Shot(
+    for (i = 0; i < enemyShotMaxCount; ++i) {
+      enemyShotArray[i] = new Shot(
         ctx,
         0,
         0,
