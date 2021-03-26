@@ -3,7 +3,7 @@ import { Vector2 } from "../common/Vector2.js";
 
 export class Player extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
-    super(ctx, x, y, w, h, 0, imagePath);
+    super(ctx, x, y, w, h, 1, imagePath);
 
     this.isComing = false;
 
@@ -25,6 +25,8 @@ export class Player extends CharacterBase {
   }
 
   setComing(startX, startY, endX, endY) {
+    // playerのライフを1に設定する
+    this.life = 1;
     this.isComing = true;
     this.comingStart = Date.now();
     this.position.set(startX, startY);
