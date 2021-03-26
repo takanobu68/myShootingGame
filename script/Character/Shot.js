@@ -69,6 +69,12 @@ export class Shot extends CharacterBase {
       let dist = this.position.distance(target.position);
       // 自身と対象の幅の1/4の距離まで近づいている場合衝突とみなす
       if (dist <= (this.width + target.width) / 4) {
+        // 自機キャラクターが対象の場合、isComingフラグによって無敵になる
+        if (target instanceof Player) {
+          if (target.isComing === true) {
+            return;
+          }
+        }
         // 対象のライフを攻撃力分減算する
         target.life -= this.power;
         // もし対象のライフが0以下になったら爆発させる
