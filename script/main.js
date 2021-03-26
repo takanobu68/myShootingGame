@@ -162,6 +162,10 @@ export function init() {
     util.drawRect(0, 0, canvas.width, canvas.height, "#eee");
     let nowTime = (Date.now() - startTime) / 1000;
 
+    // スコアの表示
+    ctx.font = "bold 24px monospace";
+    util.drawText(zeroPadding(gameScore, 5), 30, 50, "#111111");
+
     player.update();
 
     shotArray.forEach((shot) => {
