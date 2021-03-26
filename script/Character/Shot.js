@@ -21,6 +21,18 @@ export class Shot extends CharacterBase {
     }
   }
 
+  setPower(power) {
+    if (power !== null && power > 0) {
+      this.power = power;
+    }
+  }
+
+  setTargets(targets) {
+    if (targets !== null && Array.isArray(targets) && targets.length > 0) {
+      this.targetArray = targets;
+    }
+  }
+
   update() {
     if (this.life <= 0) {
       return;
