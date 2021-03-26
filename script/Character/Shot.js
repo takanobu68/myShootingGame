@@ -5,6 +5,8 @@ export class Shot extends CharacterBase {
   constructor(ctx, x, y, w, h, imagePath) {
     super(ctx, x, y, w, h, 0, imagePath);
     this.speed = 7;
+    this.power = 1;
+    this.targetArray = []; // 自身と衝突判定を取る対象を格納する
   }
 
   set(x, y) {
