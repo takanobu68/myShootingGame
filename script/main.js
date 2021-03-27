@@ -274,6 +274,38 @@ export function init() {
         scene.use("gameover");
       }
     });
+
+    // invadeシーン(wave move type の敵キャラクターを生成)
+    scene.add("invade_wave_move_type", (time) => {
+      // シーンのフレーム数が50で割り切れるときは敵キャラクターを配置する
+      if (scene.frame % 50 === 0) {
+        // ライフが0の状態の敵キャラクター(小)が見つかったら配置する
+        for (let i = 0; i < enemySmallMaxCount; ++i) {
+          if (enemyArray[i].life <= 0) {
+            let e = enemyArray[i];
+            // ここからさらに２パターンに分ける
+            // frame が 200 以下かどうかで分ける
+            if (scene.frame <= 200) {
+              // 左側を進む
+              e.set(canvas.width * 0.2, -e.height, 2, "wave");
+            } else {
+              // 右側を進む
+              e.set(canvas.width * 0.8, -e.height, 2, "wave");
+            }
+            break;
+          }
+        }
+      }
+      // シーンのフレーム数が 450 になったとき次のシーンへ
+      if (scene.frame === 450) {
+        scene.use("invade_large_type");
+      }
+      // 自機キャラクターが被弾してライフが 0 になっていたらゲームオーバー
+      if (player.life <= 0) {
+        scene.use("gameover");
+      }
+    });
+
       if (scene.frame === 100) {
         scene.use("invade");
       }
