@@ -83,6 +83,28 @@ export class Enemy extends CharacterBase {
         if (this.position.y - this.height > this.ctx.canvas.height) {
           this.life = 0;
         }
+        break;
+      case "large":
+        // 配置後のフレームが50で割り切れる時にショットを放つ
+        if (this.frame % 50 === 0) {
+          // 45度ごとにオフセットした全方位弾を放つ
+          for (let i = 0; i < 360; i += 45) {
+            let r = (i * Math.PI) / 180;
+            // ラジアンからサインとコサインを求める
+            let s = Math.sin(r);
+            let c = Math.cos(r);
+            // 求めたサイン、コサインでショットを放つ
+            this.fire(c, s, 3.0);
+          }
+        }
+        // X 座標はサイン波で、Y 座標は一定量で変化する
+        this.position.x += Math.sin((this.frame + 90) / 50) * 2.0;
+        this.position.y += 1.0;
+        // 画面外（画面下端）へ移動していたらライフを0に設定する
+        if (this.position.y - this.height > this.ctx.canvas.height) {
+          this.life = 0;
+        }
+        break;
       case "default":
       default:
         // 配置後のフレームが50の時にショットを放つ
