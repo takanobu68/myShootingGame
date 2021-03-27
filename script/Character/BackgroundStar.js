@@ -1,3 +1,5 @@
+import { Vector2 } from "../common/Vector2.js";
+
 export class BackgroundStar {
   constructor(ctx, size, speed, color = "#ffffff") {
     this.ctx = ctx;
