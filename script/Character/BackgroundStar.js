@@ -38,10 +38,10 @@ export class BackgroundStar {
     // 色を設定する
     this.ctx.fillStyle = this.color;
     // 星の現在位置を速度に応じて動かす
-    this.positiom.y += this.speed;
+    this.position.y += this.speed;
     // 星の矩形を描画する
     this.ctx.fillRect(
-      his.position.x - this.size / 2,
+      this.position.x - this.size / 2,
       this.position.y - this.size / 2,
       this.size,
       this.size
