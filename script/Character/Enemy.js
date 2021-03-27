@@ -1,3 +1,4 @@
+import { Vector2 } from "../common/Vector2.js";
 import { CharacterBase } from "../common/CharacterBase.js";
 
 export class Enemy extends CharacterBase {
@@ -11,6 +12,12 @@ export class Enemy extends CharacterBase {
     this.speed = 3;
 
     this.shotArray = null;
+
+    /**
+     * 攻撃の対象とするインスタンス
+     * @type{Character}
+     */
+    this.attackTarget = null;
   }
 
   set(x, y, life = 1, type = "default") {
