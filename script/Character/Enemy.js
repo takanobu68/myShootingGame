@@ -63,6 +63,26 @@ export class Enemy extends CharacterBase {
     // タイプに応じて挙動を変える
     // タイプに応じてライフを0にする条件を変える
     switch (this.type) {
+      // waveタイプはサイン波で揺れるように動く
+      // ショットの向きは自機キャラクターの方向に打つ
+      case "wave":
+        // 配置後のフレームが60で割り切れるときにショットを打つ
+        if (this.frame % 60 === 0) {
+          // 攻撃対象となる自機キャラクターに向かうベクトル
+          let targetX = this.attackTarget.position.x - this.position.x;
+          let targetY = this.attackTarget.position.y - this.position.y;
+          // ベクトルを単位化する
+          let targetV = Vector2.calcNormal(targetX, targetY);
+          // 自機キャラクターにややゆっくりめのショットを放つ
+          this.fire(targetV.x, targetV.y, 4.0);
+        }
+        // X座標はサイン波で、Y座標は一定量で変化する
+        this.position.x += Math.sin(this.frame / 10);
+        this.position.y += 2.0;
+        // 画面外に移動していたらライフを0に設定する
+        if (this.position.y - this.height > this.ctx.canvas.height) {
+          this.life = 0;
+        }
       case "default":
       default:
         // 配置後のフレームが50の時にショットを放つ
