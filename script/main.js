@@ -233,6 +233,10 @@ export function init() {
       explosion.update();
     });
 
+    backgroundStarArray.forEach((star) => {
+      star.update();
+    });
+
     scene.update();
 
     requestAnimationFrame(render);
