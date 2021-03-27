@@ -132,6 +132,19 @@ export function init() {
       slantingShotArray[i * 2].setExplosions(explosionArray);
       slantingShotArray[i * 2 + 1].setExplosions(explosionArray);
     }
+
+    // 流れる星を初期化する
+    for (i = 0; i < backgroundStarMaxCOunt; ++i) {
+      // 星の速度と大きさはランダムと最大値によって決まる様にする
+      let size = 1 + Math.random() * (backgroundStarMaxSize - 1);
+      let speed = 1 + Math.random() * (backgroundStarMaxSpeed - 1);
+      // 星のインスタンスを生成する
+      backgroundStarArray[i] = new BackgroundStar(ctx, size, speed);
+      // 星の初期位置もランダムに決まるようにする
+      let x = Math.random() * canvas.width;
+      let y = Math.random() * canvas.height;
+      backgroundStarArray[i].set(x, y);
+    }
   }
 
   function loadCheck() {
