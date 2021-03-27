@@ -31,6 +31,15 @@ export class Enemy extends CharacterBase {
     this.shotArray = shotArray;
   }
 
+  /**
+   * 攻撃対象を設定する
+   * @param {Charactor} target 自身が攻撃対象とするインスタンス
+   */
+  setAttackTarget(target) {
+    // 自身のプロパティに設定する
+    this.attackTarget = target;
+  }
+
   fire(x = 0.0, y = 1.0) {
     // ショットの生存を確認し非生存の物があれば生成する
     for (let i = 0; i < this.shotArray.length; ++i) {
