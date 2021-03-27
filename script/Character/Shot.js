@@ -50,6 +50,8 @@ export class Shot extends CharacterBase {
 
     // 画面外に移動していたらライフを0にする
     if (
+      this.position.x + this.width < 0 ||
+      this.position.x - this.width > this.ctx.canvas.width ||
       this.position.y + this.height < 0 ||
       this.position.y + this.width > this.ctx.canvas.height
     ) {
