@@ -296,4 +296,12 @@ export function init() {
     // 文字列の後ろから桁数分だけ文字を抜き取る
     return zeroString.slice(-count);
   }
+
+  /**
+   * 度数法の角度からラジアンを生成する
+   * @param {number} degrees - 度数法の度数
+   */
+  function degreesToRadians(degrees) {
+    return (degrees * Math.PI) / 180;
+  }
 }
