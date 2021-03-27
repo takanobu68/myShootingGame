@@ -306,10 +306,26 @@ export function init() {
       }
     });
 
+    // invadeシーン(large type の敵キャラクターを生成)
+    scene.add("invade_large_type", (time) => {
+      // シーンのフレーム数が100になった際に敵キャラクター(大)を配置する
       if (scene.frame === 100) {
-        scene.use("invade");
+        // ライフが0の状態の敵キャラクター(大)が見つかったら配置する
+        let i = enemySmallMaxCount + enemyLargeMaxCount;
+        for (let j = enemySmallMaxCount; j < i; ++j) {
+          if (enemyArray[j].life <= 0) {
+            let e = enemyArray[j];
+            // 画面中央あたりから出現し、ライフが多い
+            e.set(canvas.width / 2, -e.height, 50, "large");
+            break;
+          }
+        }
       }
-      // 自機キャラクターが被弾してライフが0になっていたらゲームオーバー
+      // シーンのフレーム数が 500 になったとき intro へ
+      if (scene.frame === 500) {
+        scene.use("intro");
+      }
+      // 自機キャラクターが被弾してライフが 0 になっていたらゲームオーバー
       if (player.life <= 0) {
         scene.use("gameover");
       }
