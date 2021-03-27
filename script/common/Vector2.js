@@ -8,6 +8,17 @@ export class Vector2 {
   static calcLength(x, y) {
     return Math.sqrt(x * x + y * y);
   }
+  /**
+   * ベクトルを単位化した結果を返す静的メソッド
+   * @static
+   * @param {number} x - X 要素
+   * @param {number} y - Y 要素
+   */
+  static calcNormal(x, y) {
+    let len = Position.calcLength(x, y);
+    return new Position(x / len, y / len);
+  }
+
   constructor(x, y) {
     this.x = x;
     this.y = y;
