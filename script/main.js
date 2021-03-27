@@ -228,12 +228,6 @@ export function init() {
         scene.use("invade_default_type");
       }
     });
-    // invadeシーン
-    scene.add("invade", (time) => {
-      // シーンのフレーム数が0のとき以外は即座に終了する
-      if (scene.frame === 0) {
-        // lifeが0の状態の敵キャラクターが見つかったら配置する
-        for (let i = 0; i < enemyMaxCount; ++i) {
           if (enemyArray[i].life <= 0) {
             let e = enemyArray[i];
             // 出現場所はXが画面中央、Yが画面上端の外側に設定する
