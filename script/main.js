@@ -186,7 +186,7 @@ export function init() {
 
   function render() {
     ctx.globalAlpha = 1.0;
-    util.drawRect(0, 0, canvas.width, canvas.height, "#eee");
+    util.drawRect(0, 0, canvas.width, canvas.height, "#111122");
     let nowTime = (Date.now() - startTime) / 1000;
 
     // スコアの表示
