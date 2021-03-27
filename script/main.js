@@ -4,6 +4,7 @@ import { Shot } from "./Character/Shot.js";
 import { Enemy } from "./Character/Enemy.js";
 import { Scene } from "./common/Scene.js";
 import { Explosion } from "./effect/Explosion.js";
+import { BackgroundStar } from "./Character/BackgroundStar.js";
 
 export function init() {
   window.isKeyDown = {};
@@ -15,11 +16,15 @@ export function init() {
   const enemyLargeMaxCount = 5;
   const enemyShotMaxCount = 50;
   const explosionMaxCount = 10;
+  const backgroundStarMaxCOunt = 100;
+  const backgroundStarMaxSize = 3;
+  const backgroundStarMaxSpeed = 4;
   const shotArray = [];
   const slantingShotArray = [];
   const enemyArray = [];
   const enemyShotArray = [];
   const explosionArray = [];
+  const backgroundStarArray = [];
   let util, canvas, ctx, startTime, player, scene;
   let restart = false;
 
