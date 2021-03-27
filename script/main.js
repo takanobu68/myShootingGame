@@ -228,12 +228,27 @@ export function init() {
         scene.use("invade_default_type");
       }
     });
+    // invadeシーン(default typeの敵キャラクターはを生成)
+    scene.add("invade_default_type", (time) => {
+      // シーンのフレーム数が30で割り切れるときは敵キャラクターを配置する
+      if (scene.frame % 30 === 0) {
+        // ライフが0の状態の敵キャラクター(小)が見つかったら配置する
+        for (let i = 0; i < enemySmallMaxCount; ++i) {
           if (enemyArray[i].life <= 0) {
             let e = enemyArray[i];
-            // 出現場所はXが画面中央、Yが画面上端の外側に設定する
-            e.set(canvas.width / 2, -e.height, 2, "default");
-            // 進行方向は真下に向かうように設定する
-            e.setVector(0.0, 1.0);
+            // ここからさらに2パターンに分ける
+            // frameを60で割り切れるかどうかで分岐する
+            if (scene.frame % 60 === 0) {
+              // 左画面から出てくる
+              e.set(e.width, 30, 2, "default");
+              // 進行方向は30度の方向
+              e.setVectorFromAngle(degreesToRadians(30));
+            } else {
+              // 右側面から出てくる
+              e.set(canvas.width + e.width, 30, 2, "default");
+              // 進行方向は 150 度の方向
+              e.setVectorFromAngle(degreesToRadians(150));
+            }
             break;
           }
         }
