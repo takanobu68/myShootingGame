@@ -223,9 +223,9 @@ export function init() {
   function sceneSetting() {
     // イントロシーン
     scene.add("intro", (time) => {
-      // 2秒経過したらシーンをinvadeにする
-      if (time > 2.0) {
-        scene.use("invade");
+      // 3秒経過したらシーンをinvade_default_typeにする
+      if (time > 3.0) {
+        scene.use("invade_default_type");
       }
     });
     // invadeシーン
