@@ -253,7 +253,27 @@ export function init() {
           }
         }
       }
-      // シーンのフレーム数が 100 になったときに再度 invade を設定する
+      // シーンのフレーム数が270になったとき次のシーンへ
+      if (scene.frame === 270) {
+        scene.use("blank");
+      }
+      // 自機キャラクターが被弾してライフが0になっていたらGameOver
+      if (player.life <= 0) {
+        scene.use("gameover");
+      }
+    });
+
+    // 間隔調整のための空白シーン
+    scene.add("blank", (time) => {
+      // シーンのフレーム数が150になったとき次のシーンへ
+      if (scene.frame === 150) {
+        scene.use("invade_wave_move_type");
+      }
+      // 被弾してライフが0になっていたらGameOver;
+      if (player.life <= 0) {
+        scene.use("gameover");
+      }
+    });
       if (scene.frame === 100) {
         scene.use("invade");
       }
