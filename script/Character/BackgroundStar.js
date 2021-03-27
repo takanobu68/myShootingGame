@@ -29,4 +29,10 @@ export class BackgroundStar {
 
     this.position = null;
   }
+
+  set(x, y) {
+    //引数を元に位置を決める
+    this.position = new Vector2(x, y);
+  }
+
 }
