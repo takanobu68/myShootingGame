@@ -11,6 +11,8 @@ export function init() {
   const gameScreen = document.getElementById("game-screen");
   const shotMaxCount = 10;
   const enemyMaxCount = 10;
+  const enemySmallMaxCount = 20;
+  const enemyLargeMaxCount = 5;
   const enemyShotMaxCount = 50;
   const explosionMaxCount = 10;
   const shotArray = [];
@@ -73,6 +75,31 @@ export function init() {
     for (i = 0; i < enemyMaxCount; ++i) {
       enemyArray[i] = new Enemy(ctx, 0, 0, 48, 48, "../images/enemy_small.png");
       enemyArray[i].setShotArray(enemyShotArray);
+    }
+
+    // 敵キャラクター(小)を初期化する
+    for (i = 0; i < enemySmallMaxCount; ++i) {
+      enemyArray[i] = new Enemy(ctx, 0, 0, 48, 48, "../images/enemy_small.png");
+      // 敵キャラクターは全て同じショットを共有するのでここで与える
+      enemyArray[i].setShotArray(enemyShotArray);
+      // 敵キャラクターは常に自機キャラクターを攻撃対象とする
+      enemyArray[i].setAttackTarget(player);
+    }
+
+    // 敵キャラクター(大)を初期化する
+    for (i = 0; i < enemyLargeMaxCount; ++i) {
+      enemyArray[enemySmallMaxCount + i] = new Enemy(
+        ctx,
+        0,
+        0,
+        64,
+        64,
+        "../images/enemy_large.png"
+      );
+      // 敵キャラクターは全て同じショットを共有するのでここで与える
+      enemyArray[enemySmallMaxCount + i].setShotArray(enemyShotArray);
+      // 敵キャラクターは常に自機キャラクターを攻撃対象とする
+      enemyArray[enemySmallMaxCount + i].setAttackTarget(player);
     }
 
     for (i = 0; i < enemyShotMaxCount; ++i) {
