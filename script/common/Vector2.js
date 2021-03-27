@@ -15,8 +15,8 @@ export class Vector2 {
    * @param {number} y - Y 要素
    */
   static calcNormal(x, y) {
-    let len = Position.calcLength(x, y);
-    return new Position(x / len, y / len);
+    let len = Vector2.calcLength(x, y);
+    return new Vector2(x / len, y / len);
   }
 
   constructor(x, y) {
